@@ -10,7 +10,6 @@ print("Welcome to the Number Guessing Game!")
 
 def number_generator(num):
     """Generates a random number between 1 and 100"""
-    print("I am thinking of a number between 1 and 100")
     number_chosen = random.randint(1,num)
     print("Psst,the correct number is :",number_chosen)
     return number_chosen
