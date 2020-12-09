@@ -10,7 +10,7 @@ print("Welcome to the Number Guessing Game!")
 
 def number_generator(num):
     """Generates a random number between 1 and 100"""
-    print("I am thinking of a number between 1 and 100")
+    print(f"I am thinking of a number between 1 and {num}")
     number_chosen = random.randint(1,num)
     return number_chosen
 
@@ -46,12 +46,11 @@ def guess_verification(guess,chosen_number,lives):
 
 def game_start(num):
     """Main Game Function taking the max number"""
-    # Generate a random number between 1 and 100
-    number = number_generator(100)
-
+    
     # get difficulty
     difficulty = input("Choose a difficulty. Type 'easy' or 'hard':\n")
-
+    # Generate a random number between 1 and num
+    number = number_generator(num)
     # Initialising lives(no of attempts)
     lives = lives_genertor(difficulty)
     
@@ -59,5 +58,7 @@ def game_start(num):
         print(f"You have {lives} attempts remaining to guess the number.")
         guess = guess_listener()
         lives = guess_verification(guess,number,lives)
-        
-game_start(100)
+
+    # play_again=input("Do you want to ")
+max_number = int(input("Set the maximum number : "))    
+game_start(max_number)
