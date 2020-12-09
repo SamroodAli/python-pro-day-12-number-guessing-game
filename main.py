@@ -1,16 +1,13 @@
 from art import logo
 import random
 from replit import clear
-clear()
-print(logo)
+
 
 #################################################### NUMBER GUESSING GAME ################################################################
 
-print("Welcome to the Number Guessing Game!")
-
 def number_generator(num):
     """Generates a random number between 1 and 100"""
-    print(f"I am thinking of a number between 1 and {num}")
+    print(f"I am thinking of a number between 0 and {num+1}")
     number_chosen = random.randint(1,num)
     return number_chosen
 
@@ -43,14 +40,21 @@ def guess_verification(guess,chosen_number,lives):
         return 0
     return lives
         
+def game_start_screen_decor():
+    clear()
+    print(logo)
+    print("Welcome to the Number Guessing Game!")
 
-def game_start(num):
+def game_start():
     """Main Game Function taking the max number"""
-    
+    # screen clearing and logo
+    game_start_screen_decor()
+    # game logic start
+    max_number = int(input("Set the maximum number : "))
     # get difficulty
     difficulty = input("Choose a difficulty. Type 'easy' or 'hard':\n")
-    # Generate a random number between 1 and num
-    number = number_generator(num)
+    # Generate a random number between 1 and max number
+    number = number_generator(max_number)
     # Initialising lives(no of attempts)
     lives = lives_genertor(difficulty)
     
@@ -59,6 +63,12 @@ def game_start(num):
         guess = guess_listener()
         lives = guess_verification(guess,number,lives)
 
-    # play_again=input("Do you want to ")
-max_number = int(input("Set the maximum number : "))    
-game_start(max_number)
+    play_again=input("Do you want to play again ? \ny or n: ")
+    if play_again=="y":
+        return game_start()
+    else:
+        print("Thank you for playing the game\n - Samrood Ali")
+
+    
+# game launch
+game_start()
